@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  notebook1:
+    image: test:v3
+    volumes:
+      - /home/jhoh/testing/test:/home/user:rw
+    ports:
+      - "8887:8887"
+    restart: always
+    command: jupyter notebook --allow-root --no-browser
+
+  notebook2:
+    image: test:v2
+    volumes:
+      - /home/jhoh/testing/test2:/home/user:rw
+    ports:
+      - "8888:8888"
+    restart: always
+    command: jupyter notebook --allow-root --no-browser
+
+  notebook3:
+    build:
+      context: .
+      dockerfile: /gpu.Dockerfile
